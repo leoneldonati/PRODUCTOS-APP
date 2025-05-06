@@ -76,21 +76,28 @@ const SEO = {
 
 <style>
   .product {
-    max-width: 500px;
     width: 100%;
+    height: 100%;
     margin: 0 auto;
     display: flex;
     flex-flow: column;
     align-items: center;
+    justify-content: center;
     gap: 26px;
-    padding: 16px;
+    padding: 46px 16px;
     overflow: hidden;
+    background-image: url("/src/assets/carton-textura.avif");
+
+    @media (max-width: 430px) {
+      padding-bottom: 6em;
+    }
   }
 
   .product_img {
-    display: flex;
+    max-width: 600px;
     width: 100%;
     height: 100%;
+    display: flex;
     aspect-ratio: 4 / 4;
     object-fit: contain;
     object-position: center;
@@ -107,6 +114,7 @@ const SEO = {
     }
   }
   .product_container--top {
+    max-width: 580px;
     width: 100%;
     display: flex;
     flex-flow: row;
@@ -117,10 +125,11 @@ const SEO = {
     }
     .product_h3 {
       font-size: xx-large;
+      color: var(--color-brand-1);
     }
 
     .product_price {
-      font-size: x-large;
+      font-size: xx-large;
       color: green;
     }
   }

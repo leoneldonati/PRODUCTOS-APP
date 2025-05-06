@@ -47,7 +47,9 @@ const parsedPrice = product.price.toLocaleString("es-ar", {
     width: 100%;
     overflow: hidden;
     box-shadow: -4px 4px 8px var(--foreground);
-    border-radius: 16px;
+    border-radius: 16px 0 9px 0;
+    padding: 4px;
+    background-image: url("/src/assets/carton-textura.avif");
     &:hover .card_img {
       animation-play-state: running;
     }
@@ -76,8 +78,9 @@ const parsedPrice = product.price.toLocaleString("es-ar", {
     }
   }
   .card_title {
-    font-size: 26px;
+    font-size: 36px;
     margin-bottom: 16px;
+    color: var(--color-brand-1);
   }
   .cart_price {
     font-size: 26px;

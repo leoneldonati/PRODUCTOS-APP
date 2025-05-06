@@ -13,7 +13,7 @@ import DarkModeButton from "./dark-mode-button.astro";
   <DarkModeButton transition:persist />
   <nav class="header_nav">
     <a href="/"><IconHome2 strokeWidth={2} /> <span>Inicio</span> </a>
-    <a href="/products"><IconPizza strokeWidth={2} /> <span>Productos</span></a>
+    <!-- <a href="/products"><IconPizza strokeWidth={2} /> <span>Productos</span></a> -->
   </nav>
 </header>
 
@@ -24,6 +24,10 @@ import DarkModeButton from "./dark-mode-button.astro";
     flex-flow: row;
     justify-content: space-between;
     padding: 16px;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    backdrop-filter: blur(0.3em);
   }
   .header_h1 {
     display: flex;

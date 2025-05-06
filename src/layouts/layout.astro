@@ -93,10 +93,13 @@ const defaultFavicon = "/favicon.svg";
     --laptop-l: 1440px;
   }
 
+  html {
+    height: 100%;
+  }
   body {
     max-width: 1440px;
     width: 100%;
-    min-height: 100dvh;
+    height: 100%;
     margin: 0 auto;
     color: var(--foreground);
     background-color: var(--background);
@@ -121,5 +124,6 @@ const defaultFavicon = "/favicon.svg";
     cursor: pointer;
   }
   .main {
+    height: 100%;
   }
 </style>
