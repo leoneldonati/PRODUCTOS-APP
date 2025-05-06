@@ -1,0 +1,98 @@
+[
+  {
+    "_id": "1",
+    "title": "Pizza Margarita",
+    "description": "Pizza clásica con salsa de tomate, mozzarella fresca y albahaca",
+    "image_path": "/images/pizza_margarita.jpg",
+    "in_stock": true,
+    "price": 12.99
+  },
+  {
+    "_id": "2",
+    "title": "Pizza Pepperoni",
+    "description": "Pizza con pepperoni, mozzarella y salsa de tomate",
+    "image_path": "/images/pizza_pepperoni.jpg",
+    "in_stock": true,
+    "price": 14.99
+  },
+  {
+    "_id": "3",
+    "title": "Pizza Vegetariana",
+    "description": "Con champiñones, pimientos, cebolla, aceitunas y mozzarella",
+    "image_path": "/images/pizza_vegetariana.jpg",
+    "in_stock": true,
+    "price": 13.99
+  },
+  {
+    "_id": "4",
+    "title": "Pizza Barbacoa",
+    "description": "Pizza con salsa barbacoa, pollo, cebolla roja y queso cheddar",
+    "image_path": "/images/pizza_barbacoa.jpg",
+    "in_stock": false,
+    "price": 15.99
+  },
+  {
+    "_id": "5",
+    "title": "Pizza Cuatro Quesos",
+    "description": "Mezcla de mozzarella, parmesano, gorgonzola y ricotta",
+    "image_path": "/images/pizza_cuatro_quesos.jpg",
+    "in_stock": true,
+    "price": 14.49
+  },
+  {
+    "_id": "6",
+    "title": "Pizza Hawaiana",
+    "description": "Pizza con jamón, piña, mozzarella y salsa de tomate",
+    "image_path": "/images/pizza_hawaiana.jpg",
+    "in_stock": true,
+    "price": 13.49
+  },
+  {
+    "_id": "7",
+    "title": "Pizza Diavola",
+    "description": "Pizza picante con salami, mozzarella y salsa de tomate",
+    "image_path": "/images/pizza_diavola.jpg",
+    "in_stock": true,
+    "price": 14.99
+  },
+  {
+    "_id": "8",
+    "title": "Pizza Marinara",
+    "description": "Pizza con salsa de tomate, ajo, orégano y aceite de oliva",
+    "image_path": "/images/pizza_marinara.jpg",
+    "in_stock": true,
+    "price": 10.99
+  },
+  {
+    "_id": "9",
+    "title": "Pizza Prosciutto",
+    "description": "Pizza con jamón crudo, mozzarella y rúcula",
+    "image_path": "/images/pizza_prosciutto.jpg",
+    "in_stock": false,
+    "price": 16.99
+  },
+  {
+    "_id": "10",
+    "title": "Pizza Funghi",
+    "description": "Pizza con champiñones frescos, mozzarella y salsa de tomate",
+    "image_path": "/images/pizza_funghi.jpg",
+    "in_stock": true,
+    "price": 13.99
+  },
+  {
+    "_id": "11",
+    "title": "Pizza Carbonara",
+    "description": "Pizza con crema, panceta, huevo y queso parmesano",
+    "image_path": "/images/pizza_carbonara.jpg",
+    "in_stock": true,
+    "price": 15.49
+  },
+  {
+    "_id": "12",
+    "title": "Pizza Mediterránea",
+    "description": "Pizza con tomate cherry, aceitunas negras, feta y orégano",
+    "image_path": "/images/pizza_mediterranea.jpg",
+    "in_stock": true,
+    "price": 14.99
+  }
+]
