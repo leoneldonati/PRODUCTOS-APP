@@ -1,0 +1,17 @@
+---
+const { message = null, targetBlank = false, title, ...rest } = Astro.props;
+const PHONE_NUMBER = import.meta.env.PHONE_NUMBER ?? 3417502479;
+
+const API_URL = `https://api.whatsapp.com/send?phone=${PHONE_NUMBER}&text=${encodeURIComponent(message ?? "")}`;
+---
+
+<a
+  href={API_URL}
+  target={targetBlank ? "_blank" : undefined}
+  rel="noreferrer noopener"
+  title={title}
+  aria-label={title}
+  {...rest}
+>
+  <slot />
+</a>
