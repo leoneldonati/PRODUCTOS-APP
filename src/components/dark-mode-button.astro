@@ -2,7 +2,7 @@
 import { IconEyeClosed, IconEye } from "@tabler/icons-react";
 ---
 
-<button class="dark_mode_button" title="">
+<button class="dark_mode_button" title="" aria-label="">
   <IconEyeClosed id="closed" />
   <IconEye id="opened" />
 </button>
@@ -26,20 +26,24 @@ import { IconEyeClosed, IconEye } from "@tabler/icons-react";
     const $button = $(".dark_mode_button") as HTMLButtonElement | null;
     const $svgs = $$(".dark_mode_button svg") as NodeListOf<SVGElement>;
     if ($button) {
-      localStorage.getItem("mode");
-      if (localStorage.getItem("mode")) {
+      if (!localStorage.getItem("mode")) {
         localStorage.setItem("mode", "light");
       }
       if (localStorage.getItem("mode") === "dark") {
         $svgs.item(1).style.display = "none";
         $svgs.item(0).style.display = "block";
+        document.documentElement.style.setProperty("--foreground", "#fff");
+        document.documentElement.style.setProperty("--background", "#000");
         $button.setAttribute("title", "Cambiar a modo claro");
       }
       if (localStorage.getItem("mode") === "light") {
         $svgs.item(0).style.display = "none";
         $svgs.item(1).style.display = "block";
+        document.documentElement.style.setProperty("--foreground", "#000");
+        document.documentElement.style.setProperty("--background", "#fff");
         $button.setAttribute("title", "Cambiar a modo oscuro");
       }
+
       $button.addEventListener("click", () => {
         const mode = localStorage.getItem("mode");
 
