@@ -75,6 +75,14 @@ const defaultOgImagePath = `${Astro.url.origin}/og/default-og.jpg`;
     --color-brand-1: red;
     --background: #fff;
     --foreground: #000;
+
+    /* BREAKPOINTS */
+    --mobile-s: 320px;
+    --mobile-m: 375px;
+    --mobile-l: 425px;
+    --tablet: 768px;
+    --laptop: 1024px;
+    --laptop-l: 1440px;
   }
 
   body {
@@ -92,6 +100,14 @@ const defaultOgImagePath = `${Astro.url.origin}/og/default-og.jpg`;
   }
   li {
     width: 100%;
+  }
+  section {
+    width: 100%;
+  }
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
   }
   .main {
   }
