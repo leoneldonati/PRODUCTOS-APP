@@ -9,8 +9,8 @@ import products from "@mock.json";
 
 <Layout>
   <section class="home">
-    <h2 class="home_h2">Las mejores pizzas</h2>
-    <h3 class="home_h3">Al mejor precio</h3>
+    <h2 class="home_h2">Las mejores <span>pizzas</span></h2>
+    <h3 class="home_h3">¡Al mejor precio!</h3>
 
     <WhatsappButton
       class="home_contact"
@@ -25,3 +25,38 @@ import products from "@mock.json";
     </div>
   </section>
 </Layout>
+
+<style>
+  .home {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 0 8px;
+  }
+  .home_h2 {
+    font-size: xx-large;
+    & > span {
+      color: var(--color-brand-1);
+    }
+  }
+  .home_h3 {
+  }
+  .home_contact {
+    padding: 12px 24px;
+    border-radius: 16px;
+    background: linear-gradient(
+      to bottom left,
+      var(--color-brand-1) 30%,
+      var(--foreground)
+    );
+    color: var(--background);
+    font-weight: bold;
+  }
+  .home_grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(auto, 500px));
+    place-content: center;
+    gap: 16px;
+  }
+</style>
