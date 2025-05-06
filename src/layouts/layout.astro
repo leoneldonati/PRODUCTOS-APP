@@ -1,13 +1,50 @@
 ---
-interface Props {}
+interface Props {
+  seo: {
+    title: string | null;
+    description: string | null;
+    image: string | null;
+  };
+}
+
+const {
+  seo: { description = null, title = null, image = null },
+} = Astro.props;
+const defaultTitle = "";
+const defaultDescription = "";
+const defaultOgImagePath = `${Astro.url.origin}/og/default-og.jpg`;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta name="description" content={description ?? defaultDescription} />
+    <meta name="author" content="Leonel Donati" />
+    <meta name="robots" content="index, follow" />
+    <meta
+      property="og:description"
+      content={description ?? defaultDescription}
+    />
+    <meta property="og:title" content={title ?? defaultTitle} />
+    <meta property="og:image" content={image ?? defaultOgImagePath} />
+
+    <title>{title ?? defaultTitle}</title>
   </head>
-  <body> </body>
+  <body>
+    <main>
+      <slot />
+    </main>
+  </body>
 </html>
+
+<style is:global>
+  *,
+  *::after,
+  *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+</style>
