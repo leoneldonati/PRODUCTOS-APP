@@ -41,11 +41,18 @@ const defaultOgImagePath = `${Astro.url.origin}/og/default-og.jpg`;
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@_leodonati" />
 
-    <link rel="preload" href="/fonts/font-1.woff2" as="font" type="woff2" />
-
     <!-- OTROS -->
     <link rel="canonical" href={Astro.url.origin} />
     <title>{title ?? defaultTitle}</title>
+
+    <!-- CARGA DE FUENTE -->
+    <link rel="preload" href="/fonts/font-1.woff2" as="font" type="woff2" />
+    <style>
+      @font-face {
+        font-family: "Primary";
+        src: url("/fonts/font-1.woff2") format("woff2");
+      }
+    </style>
   </head>
   <body>
     <Header />
@@ -65,7 +72,7 @@ const defaultOgImagePath = `${Astro.url.origin}/og/default-og.jpg`;
   }
 
   :root {
-    --color-brand-1: #fabeea;
+    --color-brand-1: red;
     --background: #fff;
     --foreground: #000;
   }
@@ -77,6 +84,14 @@ const defaultOgImagePath = `${Astro.url.origin}/og/default-og.jpg`;
     margin: 0 auto;
     color: var(--foreground);
     background-color: var(--background);
+    font-family: "Primary";
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  li {
+    width: 100%;
   }
   .main {
   }
