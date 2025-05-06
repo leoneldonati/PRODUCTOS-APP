@@ -8,11 +8,53 @@ interface Props {
 const { product } = Astro.props;
 ---
 
-<article>
-  <Image
-    src={product.image_path}
-    alt={product.description}
-    width={100}
-    height={100}
-  />
+<article class="product">
+  <div class="product_img--container">
+    <Image
+      src={product.image_path}
+      alt={product.description}
+      width={500}
+      height={500}
+      class="product_img"
+    />
+  </div>
 </article>
+
+<style>
+  .product {
+    max-width: 500px;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: -4px 4px 8px;
+    border-radius: 16px;
+    &:hover .product_img {
+      animation-play-state: running;
+    }
+  }
+  .product_img--container {
+    transform: translateY(-50%);
+  }
+  .product_img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4 / 4;
+    object-fit: contain;
+    object-position: center;
+    animation: rotatePizza 90s infinite linear;
+    animation-play-state: paused;
+
+    @media (max-width: 768px) {
+      animation-play-state: running;
+    }
+  }
+
+  @keyframes rotatePizza {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+</style>
