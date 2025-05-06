@@ -22,45 +22,47 @@ import { IconEyeClosed, IconEye } from "@tabler/icons-react";
 <script>
   import { $, $$ } from "@scripts/dom";
 
-  const $button = $(".dark_mode_button") as HTMLButtonElement | null;
-  const $svgs = $$(".dark_mode_button svg") as NodeListOf<SVGElement>;
-  if ($button) {
-    localStorage.getItem("mode");
-    if (localStorage.getItem("mode")) {
-      localStorage.setItem("mode", "light");
-    }
-    if (localStorage.getItem("mode") === "dark") {
-      $svgs.item(1).style.display = "none";
-      $svgs.item(0).style.display = "block";
-      $button.setAttribute("title", "Cambiar a modo claro");
-    }
-    if (localStorage.getItem("mode") === "light") {
-      $svgs.item(0).style.display = "none";
-      $svgs.item(1).style.display = "block";
-      $button.setAttribute("title", "Cambiar a modo oscuro");
-    }
-    $button.addEventListener("click", () => {
-      const mode = localStorage.getItem("mode");
-
-      if (mode === "dark") {
-        document.documentElement.style.setProperty("--foreground", "#000");
-        document.documentElement.style.setProperty("--background", "#fff");
-        $svgs.item(0).style.display = "none";
-        $svgs.item(1).style.display = "block";
+  document.addEventListener("astro:page-load", () => {
+    const $button = $(".dark_mode_button") as HTMLButtonElement | null;
+    const $svgs = $$(".dark_mode_button svg") as NodeListOf<SVGElement>;
+    if ($button) {
+      localStorage.getItem("mode");
+      if (localStorage.getItem("mode")) {
         localStorage.setItem("mode", "light");
-        $button.setAttribute("title", "Cambiar a modo oscuro");
-
-        return;
       }
-
-      if (mode === "light") {
-        document.documentElement.style.setProperty("--foreground", "#fff");
-        document.documentElement.style.setProperty("--background", "#000");
+      if (localStorage.getItem("mode") === "dark") {
         $svgs.item(1).style.display = "none";
         $svgs.item(0).style.display = "block";
-        localStorage.setItem("mode", "dark");
         $button.setAttribute("title", "Cambiar a modo claro");
       }
-    });
-  }
+      if (localStorage.getItem("mode") === "light") {
+        $svgs.item(0).style.display = "none";
+        $svgs.item(1).style.display = "block";
+        $button.setAttribute("title", "Cambiar a modo oscuro");
+      }
+      $button.addEventListener("click", () => {
+        const mode = localStorage.getItem("mode");
+
+        if (mode === "dark") {
+          document.documentElement.style.setProperty("--foreground", "#000");
+          document.documentElement.style.setProperty("--background", "#fff");
+          $svgs.item(0).style.display = "none";
+          $svgs.item(1).style.display = "block";
+          localStorage.setItem("mode", "light");
+          $button.setAttribute("title", "Cambiar a modo oscuro");
+
+          return;
+        }
+
+        if (mode === "light") {
+          document.documentElement.style.setProperty("--foreground", "#fff");
+          document.documentElement.style.setProperty("--background", "#000");
+          $svgs.item(1).style.display = "none";
+          $svgs.item(0).style.display = "block";
+          localStorage.setItem("mode", "dark");
+          $button.setAttribute("title", "Cambiar a modo claro");
+        }
+      });
+    }
+  });
 </script>

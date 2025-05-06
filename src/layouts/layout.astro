@@ -1,5 +1,6 @@
 ---
 import Header from "@components/header.astro";
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
   seo?: {
@@ -53,6 +54,9 @@ const defaultOgImagePath = `${Astro.url.origin}/og/default-og.jpg`;
         src: url("/fonts/font-1.woff2") format("woff2");
       }
     </style>
+
+    <!-- VIEWTRANSITIONS -->
+    <ClientRouter fallback="none" />
   </head>
   <body>
     <Header />
