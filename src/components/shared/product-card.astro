@@ -1,0 +1,18 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+---
+
+<article>
+  <Image
+    src={product.image_path}
+    alt={product.description}
+    width={100}
+    height={100}
+  />
+</article>
