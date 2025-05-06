@@ -9,7 +9,11 @@ const { product } = Astro.props;
 ---
 
 <article class="product">
-  <div class="product_img--container">
+  <a
+    title={`¡Toca para ver ${product.title}!`}
+    href={`/product/${encodeURIComponent(product._id)}`}
+    class="product_img--container"
+  >
     <Image
       src={product.image_path}
       alt={product.description}
@@ -17,7 +21,7 @@ const { product } = Astro.props;
       height={500}
       class="product_img"
     />
-  </div>
+  </a>
 </article>
 
 <style>
@@ -25,13 +29,14 @@ const { product } = Astro.props;
     max-width: 500px;
     width: 100%;
     overflow: hidden;
-    box-shadow: -4px 4px 8px;
+    box-shadow: -4px 4px 8px var(--foreground);
     border-radius: 16px;
     &:hover .product_img {
       animation-play-state: running;
     }
   }
   .product_img--container {
+    display: block;
     transform: translateY(-50%);
   }
   .product_img {
@@ -43,7 +48,7 @@ const { product } = Astro.props;
     object-position: center;
     animation: rotatePizza 90s infinite linear;
     animation-play-state: paused;
-
+    filter: drop-shadow(0 0 8px var(--color-brand-1));
     @media (max-width: 768px) {
       animation-play-state: running;
     }
