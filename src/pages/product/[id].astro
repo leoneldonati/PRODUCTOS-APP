@@ -22,7 +22,11 @@ const parsedPrice = product.price.toLocaleString("es-ar", {
   currency: "ARS",
   currencySign: "standard",
 });
-const orderMessage = ``;
+const orderMessage = `
+¡Hola Pizza Palace! \n
+Me gustaría pedir una *${product.title}* a *$${parsedPrice}*. \n
+¡Gracias!
+`;
 
 const SEO = {
   title: `¡Mira esta deliciosa ${product.title} a tan solo $${parsedPrice}!`,
@@ -63,7 +67,8 @@ const SEO = {
         title={`Pedir ${product.title}`}
         class="product_button"
       >
-        <IconBrandWhatsappFilled /> PEDIR POR WHATSAPP
+        <IconBrandWhatsappFilled />
+        <span>PEDIR POR WHATSAPP</span>
       </WhatsappButton>
     </div>
   </section>
@@ -129,11 +134,13 @@ const SEO = {
     padding: 8px 16px;
     border-radius: 16px;
     color: var(--background);
+
     &:nth-child(1) {
       background-color: green;
+      & > svg {
+        transition: transform 0.5s ease-in-out;
+      }
       &:hover {
-        & {
-        }
         & > svg {
           transform: translateX(-6px);
         }
