@@ -1,17 +1,19 @@
 ---
 import Logo from "@assets/logo.svg";
 import { IconHome2, IconPizza } from "@tabler/icons-react";
+import DarkModeButton from "./dark-mode-button.astro";
 ---
 
 <header class="header">
   <h1 class="header_h1">
     <Logo class="header_logo" />
-    Pizzería Palace
+    <span> Pizzería Palace </span>
   </h1>
 
+  <DarkModeButton />
   <nav class="header_nav">
-    <a href="/"><IconHome2 strokeWidth={2} /> Inicio </a>
-    <a href="/products"><IconPizza strokeWidth={2} /> Productos</a>
+    <a href="/"><IconHome2 strokeWidth={2} /> <span>Inicio</span> </a>
+    <a href="/products"><IconPizza strokeWidth={2} /> <span>Productos</span></a>
   </nav>
 </header>
 
@@ -29,6 +31,13 @@ import { IconHome2, IconPizza } from "@tabler/icons-react";
     gap: 4px;
     color: var(--color-brand-1);
     user-select: none;
+
+    & span {
+      display: block;
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
   }
   .header_logo {
     max-width: 45px;
@@ -55,6 +64,18 @@ import { IconHome2, IconPizza } from "@tabler/icons-react";
       }
       &:active {
         transform: scale(0.96);
+      }
+    }
+    @media (max-width: 375px) {
+      & {
+        gap: 8px;
+      }
+      & > a {
+        background-color: var(--color-brand-1);
+        color: var(--background);
+      }
+      & > a > span {
+        display: none;
       }
     }
   }
