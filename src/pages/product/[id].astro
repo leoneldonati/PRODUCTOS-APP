@@ -1,0 +1,32 @@
+---
+import type { GetStaticPaths } from "astro";
+import products from "@mock.json";
+import Layout from "@layouts/layout.astro";
+
+export const getStaticPaths = (() => {
+  const mappedIds = products.map((product) => ({
+    params: { id: product._id },
+  }));
+  return mappedIds;
+}) satisfies GetStaticPaths;
+
+const { id } = Astro.params;
+
+const product = products.find((prod) => prod._id === decodeURIComponent(id));
+
+if (product === undefined) return Astro.redirect("/", 404);
+
+const parsedPrice = product.price.toLocaleString("es-ar", {
+  currency: "ARS",
+  currencySign: "standard",
+});
+const SEO = {
+  title: `¡Mira esta deliciosa ${product.title} a tan solo $${parsedPrice}!`,
+  description: product.description,
+  image: product.image_path,
+};
+---
+
+<Layout seo={SEO}>
+  <section></section>
+</Layout>
