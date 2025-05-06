@@ -1,7 +1,27 @@
 ---
+import ProductCard from "@components/shared/product-card.astro";
+import WhatsappButton from "@components/shared/whatsapp-button.astro";
 import Layout from "@layouts/layout.astro";
+
+// PRODUCTOS
+import products from "@mock.json";
 ---
 
 <Layout>
-  <section></section>
+  <section class="home">
+    <h2 class="home_h2">Las mejores pizzas</h2>
+    <h3 class="home_h3">Al mejor precio</h3>
+
+    <WhatsappButton
+      class="home_contact"
+      message="Quiero realizar el siguiente pedido (este mensaje es personalizable)"
+      title="Realiza tu pedido haciendo click aquí"
+    >
+      ¡HAZ TU PEDIDO!
+    </WhatsappButton>
+
+    <div class="home_grid">
+      {products.map((product) => <ProductCard product={product} />)}
+    </div>
+  </section>
 </Layout>
