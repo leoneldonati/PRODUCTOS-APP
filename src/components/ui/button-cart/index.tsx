@@ -1,9 +1,14 @@
 import { useCartStore } from "@store/cart";
-
+import styles from "./index.module.css";
 const ButtonCart = () => {
-  const { list } = useCartStore();
+  const { getCartCount } = useCartStore();
   return (
-    <a href="/cart" aria-label="Ir al carrito" title="Ver el carrito">
+    <a
+      className={styles.cart_button}
+      href="/cart"
+      aria-label="Ir al carrito"
+      title="Ver el carrito"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -21,6 +26,8 @@ const ButtonCart = () => {
         <path d="M17 17h-11v-14h-2" />
         <path d="M6 5l14 1l-1 7h-13" />
       </svg>
+
+      <span>{getCartCount()}</span>
     </a>
   );
 };

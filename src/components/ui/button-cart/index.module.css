@@ -1,0 +1,9 @@
+.cart_button {
+  display: flex;
+  flex-flow: row;
+  align-items: end;
+
+  & > span {
+    font-size: larger;
+  }
+}

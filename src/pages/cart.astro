@@ -1,0 +1,19 @@
+---
+import CartInfo from "@components/ui/cart-info";
+import Layout from "@layouts/layout.astro";
+---
+
+<Layout>
+  <section>
+    <h2>CARRITO</h2>
+
+    <CartInfo client:only="react" />
+  </section>
+</Layout>
+
+<style>
+  section {
+    height: 100%;
+    padding: 8px;
+  }
+</style>
