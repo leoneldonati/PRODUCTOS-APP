@@ -12,10 +12,11 @@ interface Props {
 
 const { seo: { description = null, title = null, image = null } = {} } =
   Astro.props;
-const defaultTitle = "Pizzería Palace";
+const defaultTitle = "Pizzería Palace - Las mejores pizzas";
 const defaultDescription =
   "Esta es la descripción del sitio web de la pizzería. Pizzas deliciosas y baratas. ¡Compra ya!";
 const defaultOgImagePath = `${Astro.url.origin}/og/default-og.jpg`;
+const defaultFavicon = "/favicon.svg";
 ---
 
 <!doctype html>
@@ -54,6 +55,9 @@ const defaultOgImagePath = `${Astro.url.origin}/og/default-og.jpg`;
         src: url("/fonts/font-1.woff2") format("woff2");
       }
     </style>
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/*" href={image ?? defaultFavicon} />
 
     <!-- VIEWTRANSITIONS -->
     <ClientRouter fallback="none" />

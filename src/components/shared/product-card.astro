@@ -8,38 +8,39 @@ interface Props {
 const { product } = Astro.props;
 ---
 
-<article class="product">
+<article class="card" transition:name={product._id}>
   <a
     title={`¡Toca para ver ${product.title}!`}
     href={`/product/${encodeURIComponent(product._id)}`}
-    class="product_img--container"
+    class="card_img--container"
   >
     <Image
       src={product.image_path}
       alt={product.description}
       width={500}
       height={500}
-      class="product_img"
+      class="card_img"
+      transition:name={`image-${product._id}`}
     />
   </a>
 </article>
 
 <style>
-  .product {
+  .card {
     max-width: 500px;
     width: 100%;
     overflow: hidden;
     box-shadow: -4px 4px 8px var(--foreground);
     border-radius: 16px;
-    &:hover .product_img {
+    &:hover .card_img {
       animation-play-state: running;
     }
   }
-  .product_img--container {
+  .card_img--container {
     display: block;
     transform: translateY(-50%);
   }
-  .product_img {
+  .card_img {
     display: block;
     width: 100%;
     height: 100%;

@@ -1,8 +1,10 @@
 ---
 import type { GetStaticPaths } from "astro";
+import { Image } from "astro:assets";
+import { IconBrandWhatsappFilled } from "@tabler/icons-react";
 import products from "@mock.json";
 import Layout from "@layouts/layout.astro";
-
+import WhatsappButton from "@components/shared/whatsapp-button.astro";
 export const getStaticPaths = (() => {
   const mappedIds = products.map((product) => ({
     params: { id: product._id },
@@ -20,6 +22,8 @@ const parsedPrice = product.price.toLocaleString("es-ar", {
   currency: "ARS",
   currencySign: "standard",
 });
+const orderMessage = ``;
+
 const SEO = {
   title: `¡Mira esta deliciosa ${product.title} a tan solo $${parsedPrice}!`,
   description: product.description,
@@ -28,5 +32,114 @@ const SEO = {
 ---
 
 <Layout seo={SEO}>
-  <section></section>
+  <section class="product" transition:name={product._id}>
+    <Image
+      src={product.image_path}
+      alt={product.description}
+      width={800}
+      height={800}
+      class="product_img"
+      transition:name={`image-${product._id}`}
+      title={product.description}
+    />
+
+    <div class="product_container--top">
+      <h3 class="product_h3">
+        {product.title}
+      </h3>
+
+      <p class="product_price">
+        ${parsedPrice}
+      </p>
+    </div>
+
+    <p class="product_description">
+      {product.description}
+    </p>
+
+    <div class="product_button_container">
+      <WhatsappButton
+        message={orderMessage}
+        title={`Pedir ${product.title}`}
+        class="product_button"
+      >
+        <IconBrandWhatsappFilled /> PEDIR POR WHATSAPP
+      </WhatsappButton>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .product {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 16px;
+    padding: 0 16px;
+  }
+
+  .product_img {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4 / 4;
+    object-fit: contain;
+    object-position: center;
+    animation: rotatePizza 90s infinite linear;
+    filter: drop-shadow(0 0 8px var(--color-brand-1));
+  }
+  @keyframes rotatePizza {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .product_container--top {
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+
+    @media (max-width: 375px) {
+      flex-flow: column;
+    }
+    .product_h3 {
+      font-size: xx-large;
+    }
+
+    .product_price {
+      font-size: x-large;
+      color: green;
+    }
+  }
+  .product_description {
+  }
+  .product_button_container {
+  }
+  .product_button {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 16px;
+    border-radius: 16px;
+    color: var(--background);
+    &:nth-child(1) {
+      background-color: green;
+      &:hover {
+        & {
+        }
+        & > svg {
+          transform: translateX(-6px);
+        }
+      }
+    }
+    &:nth-child(2) {
+    }
+  }
+</style>
