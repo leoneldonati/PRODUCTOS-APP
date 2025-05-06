@@ -1,17 +1,19 @@
 ---
+import Header from "@components/header.astro";
+
 interface Props {
-  seo: {
+  seo?: {
     title: string | null;
     description: string | null;
     image: string | null;
   };
 }
 
-const {
-  seo: { description = null, title = null, image = null },
-} = Astro.props;
-const defaultTitle = "";
-const defaultDescription = "";
+const { seo: { description = null, title = null, image = null } = {} } =
+  Astro.props;
+const defaultTitle = "Pizzería Palace";
+const defaultDescription =
+  "Esta es la descripción del sitio web de la pizzería. Pizzas deliciosas y baratas. ¡Compra ya!";
 const defaultOgImagePath = `${Astro.url.origin}/og/default-og.jpg`;
 ---
 
@@ -23,17 +25,31 @@ const defaultOgImagePath = `${Astro.url.origin}/og/default-og.jpg`;
     <meta name="description" content={description ?? defaultDescription} />
     <meta name="author" content="Leonel Donati" />
     <meta name="robots" content="index, follow" />
+
+    <!-- OPEH GRAPH -->
     <meta
       property="og:description"
       content={description ?? defaultDescription}
     />
     <meta property="og:title" content={title ?? defaultTitle} />
     <meta property="og:image" content={image ?? defaultOgImagePath} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url.origin} />
+    <meta property="og:site_name" content={title ?? defaultTitle} />
 
+    <!-- TWITTER -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@_leodonati" />
+
+    <link rel="preload" href="/fonts/font-1.woff2" as="font" type="woff2" />
+
+    <!-- OTROS -->
+    <link rel="canonical" href={Astro.url.origin} />
     <title>{title ?? defaultTitle}</title>
   </head>
   <body>
-    <main>
+    <Header />
+    <main class="main">
       <slot />
     </main>
   </body>
@@ -46,5 +62,22 @@ const defaultOgImagePath = `${Astro.url.origin}/og/default-og.jpg`;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  }
+
+  :root {
+    --color-brand-1: #fabeea;
+    --background: #fff;
+    --foreground: #000;
+  }
+
+  body {
+    max-width: 1440px;
+    width: 100%;
+    min-height: 100dvh;
+    margin: 0 auto;
+    color: var(--foreground);
+    background-color: var(--background);
+  }
+  .main {
   }
 </style>
