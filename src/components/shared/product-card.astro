@@ -6,6 +6,11 @@ interface Props {
 }
 
 const { product } = Astro.props;
+
+const parsedPrice = product.price.toLocaleString("es-ar", {
+  currency: "ARS",
+  currencySign: "standard",
+});
 ---
 
 <article class="card" transition:name={product._id}>
@@ -23,10 +28,21 @@ const { product } = Astro.props;
       transition:name={`image-${product._id}`}
     />
   </a>
+
+  <p class="card_title">
+    {product.title}
+  </p>
+
+  <p class="cart_price">
+    ${parsedPrice}
+  </p>
 </article>
 
 <style>
   .card {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
     max-width: 500px;
     width: 100%;
     overflow: hidden;
@@ -35,10 +51,15 @@ const { product } = Astro.props;
     &:hover .card_img {
       animation-play-state: running;
     }
+    &:hover .card_img--container {
+      transform: translateY(0);
+    }
   }
   .card_img--container {
-    display: block;
+    width: 100%;
+    display: flex;
     transform: translateY(-50%);
+    transition: transform 0.2s ease-in;
   }
   .card_img {
     display: block;
@@ -54,7 +75,15 @@ const { product } = Astro.props;
       animation-play-state: running;
     }
   }
-
+  .card_title {
+    font-size: 26px;
+    margin-bottom: 16px;
+  }
+  .cart_price {
+    font-size: 26px;
+    margin-bottom: 16px;
+    color: green;
+  }
   @keyframes rotatePizza {
     from {
       transform: rotate(0);
